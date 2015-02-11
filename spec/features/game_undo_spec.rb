@@ -37,7 +37,7 @@ describe 'undoing a game' do
     expect(loser.rating).to be 975
   end
 
-  it 'wil not undo a game unless it is the last game' do
+  it 'will not undo a game unless it is the last game' do
     creator = GameCreator.new(winner.id, loser.id)
     creator.save
     first_game = creator.game
