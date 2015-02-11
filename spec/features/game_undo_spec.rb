@@ -35,8 +35,15 @@ describe 'undoing a game' do
     loser.reload
     expect(winner.rating).to be 1025
     expect(loser.rating).to be 975
+  end
 
-    
-    
+  it 'wil not undo a game unless it is the last game' do
+    creator = GameCreator.new(winner.id, loser.id)
+    creator.save
+    first_game = creator.game
+    bad_creator = GameCreator.new(winner.id, loser.id)
+    bad_creator.save
+    bad_game = bad_creator.game
+    expect(GameDestroyer.new(first_game).undo_game!).to be false
   end
 end
