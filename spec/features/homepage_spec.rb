@@ -7,8 +7,14 @@ describe 'home page' do
   let!(:game1) { Game.create! winner_id: player1.id, loser_id: player2.id, winner_rating: 400, loser_rating: 500 }
   let!(:game2) { Game.create! winner_id: player2.id, loser_id: player1.id, winner_rating: 500, loser_rating: 400 }
 
+  it 'contains a link to add a club' do
+    visit root_path
+    expect(find('.top-bar-section')).to have_content('Add Club')
+  end
+
   it 'shows player ratings' do
     visit root_path
+
 
     within "#player-#{player1.id}" do
       expect(find('.rank')).to have_content(2)
