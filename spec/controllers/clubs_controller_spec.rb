@@ -52,4 +52,19 @@ describe ClubsController do
       
     end
   end
+
+  describe '#show' do
+    let(:club_id) { 'club id' }
+    let(:club) { double 'club', id: club_id }
+
+    before do 
+      allow(Club).to receive(:find).with(club_id) { club }
+    end
+
+    it 'shows the last club created' do
+      get :show, id: club_id
+      expect(assigns(:club)).to eq(club)
+      expect(response).to render_template(:show)
+    end
+  end
 end

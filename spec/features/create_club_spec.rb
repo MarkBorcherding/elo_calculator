@@ -10,12 +10,10 @@ describe 'Creating a club' do
   end
   context 'Adding club details' do
     it 'creates a new club' do
-      
+      visit new_club_path
+      fill_in 'club_name', with: 'Test'
+      click_button 'Create Club'
+      expect(page).to have_content('Test')
     end
-
-    it 'only creates club if name is not taken' do
-
-    end
-    
   end
 end
