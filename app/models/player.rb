@@ -3,6 +3,7 @@ class Player < ActiveRecord::Base
   has_many :lost_games, foreign_key: 'loser_id', class_name: 'Game'
 
   validates_presence_of :name, :rating
+  validates :name, uniqueness: { message: 'Please choose another name' }
 
   scope :by_name, -> { order(:name) }
 

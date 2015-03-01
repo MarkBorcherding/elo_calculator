@@ -16,9 +16,9 @@ class PlayersController < ApplicationController
     @player.rating = 1000
 
     if @player.save
-      redirect_to root_path, notice: 'Player created'
+      redirect_to @player, notice: 'Player created'
     else
-      flash.now[:alert] = 'Player failed to save'
+      flash.now[:alert] = 'Please choose another name'
       render :new
     end
   end
