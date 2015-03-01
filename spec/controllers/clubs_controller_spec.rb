@@ -16,7 +16,6 @@ describe ClubsController do
 
     context 'successfully creates a game' do
       let(:params) { { club: { name: club_name } } }
-      let(:save_success?) { true }
 
       it 'notifies you and takes you to the club page' do
         post :create, params
