@@ -1,4 +1,20 @@
 class ClubsController < ApplicationController
   def new
   end
+
+  def create
+    @club = Club.create(club_params)
+    if @club.save
+      redirect_to @club, notice: 'Club successfully created'
+    else 
+      flash.now[:alert] = @club.errors.full_messages.join('. ')
+      render :new
+    end
+  end
+
+  private
+
+  def club_params
+    params.require(:club).permit(:name)
+  end
 end

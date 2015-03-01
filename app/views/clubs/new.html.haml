@@ -1,0 +1,5 @@
+= form_for :club, url: clubs_path do |f|
+  = f.label :name do
+    Club Name
+    = f.text_field(:name)
+  = f.submit 'Create Club', class: 'button'
