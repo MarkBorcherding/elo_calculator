@@ -1,4 +1,8 @@
+
 %h4 Profile
+
+.right
+  = render 'memberships/new'
 
 %p
   %strong
@@ -8,6 +12,16 @@
   %strong
     Rating:
   = @player.rating
+
+- unless @player.clubs.empty?
+  %p
+    %strong
+      Clubs:
+      - @player.clubs.each do |club|
+        = club.name 
+        = (@player.clubs.last == club) ?  nil : ', '
+      
+      
 
 %h4 Games Played (#{@player.games_played_count})
 
