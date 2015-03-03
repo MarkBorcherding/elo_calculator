@@ -2,9 +2,13 @@ class Player < ActiveRecord::Base
   has_many :won_games, foreign_key: 'winner_id', class_name: 'Game'
   has_many :lost_games, foreign_key: 'loser_id', class_name: 'Game'
 
+  has_many :memberships
+  has_many :clubs, through: :memberships
+
   validates_presence_of :name, :rating
   validates :name, uniqueness: { message: 'Please choose another name' }
 
+  accepts_nested_attributes_for :memberships
   scope :by_name, -> { order(:name) }
 
   def games

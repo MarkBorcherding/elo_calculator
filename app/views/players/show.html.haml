@@ -9,6 +9,14 @@
     Rating:
   = @player.rating
 
+- unless @player.clubs.empty?
+  %p
+    %strong
+      Clubs:
+      - @player.clubs.each do |club|
+        = club.name
+        = (@player.clubs.last == club) ?  nil : ', '
+
 %h4 Games Played (#{@player.games_played_count})
 
 %table{width: '100%'}
