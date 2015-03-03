@@ -1,2 +1,17 @@
-%h1
+%h3
   = @club.name
+
+%h4 Players
+
+%table{width: '100%'}
+  %thead
+    %tr
+      %th
+        Rank
+      %th
+        Name
+      %th
+        Rating
+      %th
+        Won / Lost
+  = render @club.players

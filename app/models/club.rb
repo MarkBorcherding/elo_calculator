@@ -3,6 +3,5 @@ class Club < ActiveRecord::Base
   validates :name, presence: true
 
   has_many :memberships
-  has_many :members, through: :memberships, class_name: 'Player'
+  has_many :players, through: :memberships
 end
-
