@@ -8,6 +8,7 @@ describe 'Creating a club' do
       expect(page.current_path).to eq new_club_path
     end
   end
+
   context 'Adding club details' do
     it 'creates a new club' do
       visit new_club_path

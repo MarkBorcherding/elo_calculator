@@ -1,6 +1,20 @@
 require 'rails_helper'
 
 describe ClubsController do
+  describe '#index' do
+    let(:clubs) { double 'clubs' }
+
+    before do
+      allow(Club).to receive(:all) { clubs }
+    end
+
+    it 'lists clubs' do
+      get :index
+      expect(assigns(:clubs)).to eq(clubs)
+      expect(response).to render_template(:index)
+    end
+  end
+
   describe '#new' do
     it 'assigns a new club' do
       get :new
@@ -10,8 +24,8 @@ describe ClubsController do
 
   describe '#create' do
     let(:existing_club) { 'Ace' }
-    let(:club_name) { 'Test Club' } 
-    let(:success_message) { 'Club successfully created' } 
+    let(:club_name) { 'Test Club' }
+    let(:success_message) { 'Club successfully created' }
     let(:new_club) { double 'new club' }
 
     context 'successfully creates a game' do
@@ -48,7 +62,6 @@ describe ClubsController do
         expect(flash[:alert]).to eq(full_messages.join('. '))
         expect(response).to render_template(:new)
       end
-      
     end
   end
 
@@ -56,7 +69,7 @@ describe ClubsController do
     let(:club_id) { 'club id' }
     let(:club) { double 'club', id: club_id }
 
-    before do 
+    before do
       allow(Club).to receive(:find).with(club_id) { club }
     end
 

@@ -1,5 +1,5 @@
 = form_for :membership, url: memberships_path do |f|
-  =f.label :club_id do
+  = f.label :club_id do
     Join a club
     = f.collection_select :club_id, all_clubs, :id, :name
     = f.hidden_field :player_id, value: @player.id
