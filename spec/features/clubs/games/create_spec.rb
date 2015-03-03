@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe "creating a new game" do
+  let!(:club) { Club.create! name: 'some club' }
   let!(:player1) { Player.create! name: 'player 1' }
   let!(:player2) { Player.create! name: 'player 2' }
 
@@ -12,7 +13,7 @@ describe "creating a new game" do
 
   context 'valid game' do
     it 'creates new game' do
-      visit new_game_path
+      visit new_club_game_path(club.id)
 
       select player1.name, from: :game_winner_id
       select player2.name, from: :game_loser_id
@@ -35,7 +36,7 @@ describe "creating a new game" do
 
   context 'winner and loser are same' do
     it 'does not create new game' do
-      visit new_game_path
+      visit new_club_game_path(club.id)
 
       select player1.name, from: :game_winner_id
       select player1.name, from: :game_loser_id
