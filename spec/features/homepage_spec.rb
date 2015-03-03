@@ -11,7 +11,10 @@ describe 'home page' do
 
   it 'contains a link to add a club' do
     visit root_path
-    expect(find('.top-bar-section')).to have_content('Add Club')
+    expect(find('.top-bar-section')).to have_link('Add Club')
+    expect(find('.top-bar-section')).to have_content('Add Player')
+    expect(find('.top-bar-section')).to_not have_content('Past Games')
+    expect(find('.top-bar-section')).to_not have_content('Add Games')
   end
 
   it 'lists clubs' do

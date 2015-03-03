@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :clubs, only: [:new, :create, :show]
   resources :memberships, only: [:create]
 
-  root 'clubs#index'
+  root 'homepage#show'
 end
