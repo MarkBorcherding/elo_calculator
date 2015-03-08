@@ -1,6 +1,19 @@
 require 'rails_helper'
 
 describe ClubsController do
+  describe '#index' do
+    let(:clubs) { double 'clubs' }
+
+    before do
+      allow(Club).to receive(:all) { clubs }
+    end
+
+    it 'gets all clubs' do
+      get :index
+      expect(assigns(:clubs)).to eq(clubs)
+    end
+  end
+
   describe '#new' do
     let(:club) { double 'club' }
 
