@@ -1,5 +1,5 @@
 class HomepageController < ApplicationController
   def show
-    @players = Player.for_homepage
+    @clubs = Club.all
   end
 end

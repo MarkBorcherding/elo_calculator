@@ -2,15 +2,15 @@ require 'rails_helper'
 
 describe HomepageController do
   describe '#show' do
-    let(:players) { double 'players' }
+    let(:clubs) { double 'clubs' }
 
     before do
-      allow(Player).to receive(:for_homepage) { players }
+      allow(Club).to receive(:all) { clubs }
     end
 
-    it 'gets players by rating' do
+    it 'gets clubs' do
       get :show
-      expect(assigns(:players)).to eq(players)
+      expect(assigns(:clubs)).to eq(clubs)
     end
   end
 end

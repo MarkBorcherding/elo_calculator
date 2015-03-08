@@ -41,4 +41,18 @@ describe ClubsController do
       end
     end
   end
+
+  describe '#show' do
+    let(:club) { double 'club' }
+    let(:club_id) { "5" }
+
+    before do
+      allow(Club).to receive(:find).with(club_id) { club }
+    end
+
+    it 'gets club' do
+      get :show, { id: club_id }
+      expect(assigns(:club)).to eq(club)
+    end
+  end
 end
