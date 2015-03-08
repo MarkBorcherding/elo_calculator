@@ -9,13 +9,17 @@ describe 'club page' do
   let!(:game1) { Game.create! winner_id: player1.id, loser_id: player2.id, winner_rating: 400, loser_rating: 500, club_id: club.id }
   let!(:game2) { Game.create! winner_id: player2.id, loser_id: player1.id, winner_rating: 500, loser_rating: 400, club_id: club.id }
 
+  before do
+    Membership.create! club_id: club.id, player_id: player1.id
+    Membership.create! club_id: club.id, player_id: player2.id
+  end
+
   it 'shows clubs' do
     visit club_path(club.id)
-
     expect(page).to have_content(club.name)
   end
 
-  it 'shows player ratings', pending: true do
+  it 'shows player ratings' do
     visit club_path(club.id)
 
     within "#player-#{player1.id}" do
