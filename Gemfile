@@ -44,6 +44,7 @@ gem 'rails_12factor', group: :production
 group :test, :development do
   gem 'rspec-rails'
   gem 'site_prism'
+  gem 'faker'
 end
 
 group :test do
