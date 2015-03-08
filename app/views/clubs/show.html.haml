@@ -1,6 +1,6 @@
 %h3= @club.name
 
-= link_to 'Join Club', '#', class: 'button'
+= link_to 'Join Club', new_membership_path, class: 'button'
 
 -#%h4 Players
 -#= render partial: 'players', locals: { players: @club.players }

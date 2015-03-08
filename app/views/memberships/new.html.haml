@@ -1,0 +1,17 @@
+%h3 Join Club
+
+= form_for @membership do |f|
+  .row
+    .small-12.large-6.columns
+      = f.label :club_id do
+        Club
+        = f.collection_select :club_id, all_clubs, :id, :name, prompt: 'Select Club'
+
+  .row
+    .small-12.large-6.columns
+      = f.label :player_id do
+        Player
+        = f.collection_select :player_id, all_players, :id, :name, prompt: 'Select Person'
+  .row
+    .small-12.large-3.columns
+      = f.submit 'Join Club', class: 'button expand'
