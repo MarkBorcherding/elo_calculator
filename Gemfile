@@ -42,6 +42,7 @@ group :test, :development do
   gem 'rspec-rails'
   gem 'site_prism'
   gem 'pry-byebug'
+  gem 'teaspoon'
 end
 
 group :test do
