@@ -19,6 +19,7 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'foundation-rails'
 gem 'foundation-icons-sass-rails'
+gem 'react-rails'
 
 gem 'haml-rails'
 
