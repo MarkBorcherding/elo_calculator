@@ -1,13 +1,3 @@
 %h3 Games
 
-%table{width: '100%'}
-  %thead
-    %tr
-      %th
-        Humble Victor
-      %th
-        Graceful Defeated
-      %th
-        Date
-  %tbody
-    = render @games
+= react_component 'Games', games: @games, prerender: true
