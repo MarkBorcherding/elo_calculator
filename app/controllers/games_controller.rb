@@ -1,6 +1,13 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.includes(:winner, :loser).most_recent
+    @games = Game
+              .includes(:winner, :loser)
+              .most_recent
+              .map do |g|
+                g.attributes.merge winner_name: g.winner.name,
+                                   loser_name: g.loser.name,
+                                   created_at: g.created_at.strftime("%I:%M %p %m/%d")
+              end
   end
 
   def new
@@ -39,4 +46,5 @@ class GamesController < ApplicationController
   def game_params
     params.require(:game).permit(:winner_id, :loser_id)
   end
+
 end

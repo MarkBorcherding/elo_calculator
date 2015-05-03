@@ -4,11 +4,11 @@ var Games = React.createClass({
     return this.props.games.map(function(game){
       return <tr align="center">
               <td className="winner">
-                {game.winner_id}
+                {game.winner_name}
                 ({game.winner_rating})
               </td>
               <td className="loser">
-                {game.loser_id}
+                {game.loser_name}
                 ({game.loser_rating})
               </td>
               <td className="date">
